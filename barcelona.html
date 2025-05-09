@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Camisetas FC Barcelona</title>
+  <link rel="stylesheet" href="D:\Users\javier.concon\Desktop\Trabajo pagina web\style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Camisetas FC Barcelona</h1>
+    <a href="D:\Users\javier.concon\Desktop\Trabajo pagina web\index.html" style="color:white;">⬅ Volver</a>
+  </header>
+
+  <button id="boton-carrito" onclick="toggleCarrito()">🛒 Carrito <span id="contador">0</span></button>
+
+  <div class="productos">
+    <div class="producto">
+      <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-07-18-a-las-13.39.02-Photoroom-1-1.png" />
+      <h3>Barça 2024 Home</h3>
+      <p class="precio">29.99€</p>
+      <select id="talla-b1"><option>S</option><option>M</option><option>L</option></select>
+      <button onclick="agregarAlCarrito('Barça 2024 Home', 29.99, document.getElementById('talla-b1').value)">Añadir</button>
+    </div>
+    <div class="producto">
+      <img src="https://offsidex.shop/wp-content/uploads/2024/10/CAMISETA-FC-BARCELONA-24-25-AWAY.jpg" />
+      <h3>Barça 2024 Away</h3>
+      <p class="precio">29.99€</p>
+      <select id="talla-b2"><option>S</option><option>M</option><option>L</option></select>
+      <button onclick="agregarAlCarrito('Barça 2024 Away', 29.99, document.getElementById('talla-b2').value)">Añadir</button>
+    </div>
+  </div>
+
+  <div id="carrito-panel">
+    <h2>Carrito</h2>
+    <ul id="lista-carrito"><li>Carrito vacío</li></ul>
+    <p><strong>Total: €<span id="total">0.00</span></strong></p>
+    <button id="comprar" onclick="comprar()">Comprar</button>
+  </div>
+
+  <script>
+    let carrito = [];
+
+function toggleCarrito() {
+  document.getElementById('carrito-panel').classList.toggle('abierto');
+}
+
+function agregarAlCarrito(nombre, precio, talla) {
+  const key = `${nombre} (${talla})`;
+  const item = carrito.find(p => p.key === key);
+  if (item) {
+    item.cantidad++;
+  } else {
+    carrito.push({ key, nombre, talla, precio, cantidad: 1 });
+  }
+  actualizarCarrito();
+}
+
+function eliminarDelCarrito(index) {
+  if (carrito[index].cantidad > 1) {
+    carrito[index].cantidad--;
+  } else {
+    carrito.splice(index, 1);
+  }
+  actualizarCarrito();
+}
+
+function actualizarCarrito() {
+  const lista = document.getElementById('lista-carrito');
+  const totalSpan = document.getElementById('total');
+  const contador = document.getElementById('contador');
+
+  lista.innerHTML = '';
+  let total = 0;
+  let cantidadTotal = 0;
+
+  carrito.forEach((item, index) => {
+    total += item.precio * item.cantidad;
+    cantidadTotal += item.cantidad;
+    const li = document.createElement('li');
+    li.innerHTML = `${item.nombre} (${item.talla}) x${item.cantidad} - €${(item.precio * item.cantidad).toFixed(2)} <button onclick="eliminarDelCarrito(${index})">-</button>`;
+    lista.appendChild(li);
+  });
+
+  if (carrito.length === 0) {
+    lista.innerHTML = '<li>Carrito vacío</li>';
+  }
+
+  totalSpan.textContent = total.toFixed(2);
+  contador.textContent = cantidadTotal;
+}
+
+function comprar() {
+  if (carrito.length === 0) {
+    alert("Tu carrito está vacío.");
+    return;
+  }
+  alert("¡Gracias por tu compra!");
+  carrito = [];
+  actualizarCarrito();
+  toggleCarrito();
+}
+  </script>
+</body>
+</html>
