@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Soporte</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .soporte {
+      max-width: 600px;
+      margin: 50px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .soporte h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .soporte form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .soporte input, .soporte textarea {
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    .soporte button {
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .soporte button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+<div class="soporte">
+  <h2>Soporte</h2>
+  <p>¿Tienes algún problema o pregunta? Contáctanos:</p>
+  <form action="mailto:soporte@tudominio.com" method="post" enctype="text/plain">
+    <input type="text" name="nombre" placeholder="Tu nombre" required>
+    <input type="email" name="correo" placeholder="Tu correo electrónico" required>
+    <textarea name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+    <button type="submit">Enviar mensaje</button>
+  </form>
+</div>
+
+</body>
+</html>
