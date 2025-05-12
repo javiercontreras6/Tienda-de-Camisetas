@@ -123,6 +123,33 @@ button {
       </a>
     
   </div>
+  <footer>
+    <section id="soporte">
+    <h2>Soporte</h2>
+    
+    <div class="faq">
+        <h3 onclick="toggleFAQ(this)">¿Cómo puedo contactarte?</h3>
+        <p class="respuesta">Puedes usar el formulario de contacto o escribir a soporte@camisetasluxe.com.</p>
+
+        <h3 onclick="toggleFAQ(this)">¿Cuánto tiempo tardas en responder?</h3>
+        <p class="respuesta">Generalmente respondo dentro de 24 a 48 horas hábiles.</p>
+
+        <h3 onclick="toggleFAQ(this)">¿Ofreces ayuda personalizada?</h3>
+        <p class="respuesta">Sí, depende del caso. Escríbeme y vemos cómo puedo ayudarte.</p>
+    </div>
+
+    <h3>Enviar una solicitud de soporte</h3>
+    <form id="formularioSoporte">
+        <label for="soporteAsunto">Asunto:</label>
+        <input type="text" id="soporteAsunto" name="asunto" required>
+
+        <label for="soporteMensaje">Descripción del problema:</label>
+        <textarea id="soporteMensaje" name="mensaje" rows="4" required></textarea>
+
+        <button type="submit">Enviar solicitud</button>
+    </form>
+</section>
+  </footer>
   <script>
     let carrito = [];
 
