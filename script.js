@@ -1,5 +1,4 @@
- <script>
-    let carrito = [];
+  let carrito = [];
 
 function toggleCarrito() {
   document.getElementById('carrito-panel').classList.toggle('abierto');
@@ -121,4 +120,4 @@ function comprar() {
   actualizarCarrito();
   toggleCarrito();
 }
-  </script>
+  
